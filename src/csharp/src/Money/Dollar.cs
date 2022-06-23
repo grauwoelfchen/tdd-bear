@@ -7,7 +7,11 @@ public class Dollar {
     this.amount = amount;
   }
 
-  public Dollar times(int multiplier) {
+  public Dollar Times(int multiplier) {
     return new Dollar(this.amount * multiplier);
+  }
+
+  public bool Equals(Dollar dollar) {
+    return this.amount == dollar.amount;
   }
 }
