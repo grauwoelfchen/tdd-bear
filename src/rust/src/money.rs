@@ -1,7 +1,7 @@
-use expression::Expression;
-use bank::Bank;
-use mul::Mul;
-use sum::Sum;
+use crate::expression::Expression;
+use crate::bank::Bank;
+use crate::mul::Mul;
+use crate::sum::Sum;
 
 #[derive(Debug)]
 pub struct Money {
@@ -44,7 +44,7 @@ impl PartialEq for Money {
 }
 
 impl Expression for Money {
-  fn plus<'a>(&'a self, addend: &'a (Expression + 'a)) -> Sum<'a> {
+  fn plus<'a>(&'a self, addend: &'a (dyn Expression + 'a)) -> Sum<'a> {
     Sum::new(self, addend)
   }
 
