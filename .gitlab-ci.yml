@@ -5,8 +5,7 @@ stages:
 # rust {{{
 check-rust:
   stage: vet
-  # image: rust:latest
-  image: grauwoelfchen/rust-ci-tools:nightly
+  image: registry.gitlab.com/grauwoelfchen/portolan/rust-vet-tools:nightly
   before_script:
     - rustc --version
     - cargo --version
@@ -28,8 +27,7 @@ check-rust:
 
 test-rust:
   stage: test
-  # image: rust:latest
-  image: grauwoelfchen/rust-ci-tools:nightly
+  image: registry.gitlab.com/grauwoelfchen/portolan/rust-vet-tools:nightly
   before_script:
     - rustc --version
     - cargo --version
@@ -56,8 +54,7 @@ test-rust:
 # rust-xunit {{{
 check-rust-xunit:
   stage: vet
-  # image: rust:latest
-  image: grauwoelfchen/rust-ci-tools:nightly
+  image: registry.gitlab.com/grauwoelfchen/portolan/rust-vet-tools:nightly
   before_script:
     - rustc --version
     - cargo --version
@@ -79,8 +76,7 @@ check-rust-xunit:
 
 test-rust-xunit:
   stage: test
-  # image: rust:latest
-  image: grauwoelfchen/rust-ci-tools:nightly
+  image: registry.gitlab.com/grauwoelfchen/portolan/rust-vet-tools:nightly
   before_script:
     - rustc --version
     - cargo --version
@@ -160,7 +156,7 @@ test-csharp:
 # go-xunit {{{
 check-go-xunit:
   stage: vet
-  image: go:latest
+  image: golang:latest
   before_script:
     - go version
   script:
@@ -183,7 +179,7 @@ check-go-xunit:
 # - coverage
 test-go-xunit:
   stage: test
-  image: go:latest
+  image: golang:latest
   variables:
     APT_CACHE_DIR: apt-cache
   before_script:
