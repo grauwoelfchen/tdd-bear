@@ -160,7 +160,7 @@ check-go-xunit:
   before_script:
     - go version
   script:
-    - cd src/go-xunit && make format
+    - cd src/go-xunit/src/gitlab.com/grauwoelfchen/go-xunit && make format
   only:
     refs:
       - branches
@@ -186,10 +186,9 @@ test-go-xunit:
     - mkdir -pv $APT_CACHE_DIR && apt-get -qq update
     - apt-get -qq -o dir::cache::archives="$APT_CACHE_DIR" install -y
       zip
-    - go get -u github.com/golang/dep/cmd/dep
     - go version
   script:
-    - cd src/go-xunit && make test
+    - cd src/go-xunit/src/gitlab.com/grauwoelfchen/go-xunit && make test
   cache:
     paths:
       - apt-cache
