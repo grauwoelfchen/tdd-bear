@@ -2,6 +2,7 @@ stages:
   - vet
   - test
 
+# rust {{{
 check-rust:
   stage: vet
   # image: rust:latest
@@ -24,69 +25,6 @@ check-rust:
       - .gitlab-ci.yml
       - bin/**/*
       - src/rust/**/*
-
-check-rust-xunit:
-  stage: vet
-  # image: rust:latest
-  image: grauwoelfchen/rust-ci-tools:nightly
-  before_script:
-    - rustc --version
-    - cargo --version
-    - cargo fmt --version
-  script:
-    - cd src/rust-xunit && make format
-  only:
-    refs:
-      - branches
-      - merge_requests
-    changes:
-      - README.md
-      - CHANGELOG
-      - .env.ci.sample
-      - .gitignore
-      - .gitlab-ci.yml
-      - bin/**/*
-      - src/rust-xunit/**/*
-
-check-csharp:
-  stage: vet
-  image: mcr.microsoft.com/dotnet/sdk:latest
-  before_script:
-    - dotnet --version
-  script:
-    - cd src/csharp && make format
-  only:
-    refs:
-      - branches
-      - merge_requests
-    changes:
-      - README.md
-      - CHANGELOG
-      - .env.ci.sample
-      - .gitignore
-      - .gitlab-ci.yml
-      - bin/**/*
-      - src/rust/**/*
-
-check-go-xunit:
-  stage: vet
-  image: go:latest
-  before_script:
-    - go version
-  script:
-    - cd src/go-xunit && make format
-  only:
-    refs:
-      - branches
-      - merge_requests
-    changes:
-      - README.md
-      - CHANGELOG
-      - .env.ci.sample
-      - .gitignore
-      - .gitlab-ci.yml
-      - bin/**/*
-      - src/go-xunit/**/*
 
 test-rust:
   stage: test
@@ -113,6 +51,31 @@ test-rust:
       - .gitlab-ci.yml
       - bin/**/*
       - src/rust/**/*
+# }}}
+
+# rust-xunit {{{
+check-rust-xunit:
+  stage: vet
+  # image: rust:latest
+  image: grauwoelfchen/rust-ci-tools:nightly
+  before_script:
+    - rustc --version
+    - cargo --version
+    - cargo fmt --version
+  script:
+    - cd src/rust-xunit && make format
+  only:
+    refs:
+      - branches
+      - merge_requests
+    changes:
+      - README.md
+      - CHANGELOG
+      - .env.ci.sample
+      - .gitignore
+      - .gitlab-ci.yml
+      - bin/**/*
+      - src/rust-xunit/**/*
 
 test-rust-xunit:
   stage: test
@@ -139,11 +102,43 @@ test-rust-xunit:
       - .gitlab-ci.yml
       - bin/**/*
       - src/rust-xunit/**/*
+# }}}
+
+# csharp {{{
+check-csharp:
+  stage: vet
+  image: mcr.microsoft.com/dotnet/sdk:latest
+  variables:
+    APT_CACHE_DIR: apt-cache
+  before_script:
+    - mkdir -pv $APT_CACHE_DIR && apt-get -qq update
+    - apt-get -qq -o dir::cache::archives="$APT_CACHE_DIR" install -y
+      make
+    - dotnet --version
+  script:
+    - cd src/csharp && make format
+  only:
+    refs:
+      - branches
+      - merge_requests
+    changes:
+      - README.md
+      - CHANGELOG
+      - .env.ci.sample
+      - .gitignore
+      - .gitlab-ci.yml
+      - bin/**/*
+      - src/rust/**/*
 
 test-csharp:
   stage: test
   image: mcr.microsoft.com/dotnet/sdk:latest
+  variables:
+    APT_CACHE_DIR: apt-cache
   before_script:
+    - mkdir -pv $APT_CACHE_DIR && apt-get -qq update
+    - apt-get -qq -o dir::cache::archives="$APT_CACHE_DIR" install -y
+      make
     - dotnet --version
   script:
     # TODO: coverage
@@ -160,6 +155,28 @@ test-csharp:
       - .gitlab-ci.yml
       - bin/**/*
       - src/rust/**/*
+# }}}
+
+# go-xunit {{{
+check-go-xunit:
+  stage: vet
+  image: go:latest
+  before_script:
+    - go version
+  script:
+    - cd src/go-xunit && make format
+  only:
+    refs:
+      - branches
+      - merge_requests
+    changes:
+      - README.md
+      - CHANGELOG
+      - .env.ci.sample
+      - .gitignore
+      - .gitlab-ci.yml
+      - bin/**/*
+      - src/go-xunit/**/*
 
 # TODO:
 # - create docker image for go (Gentoo Linux)
@@ -192,3 +209,4 @@ test-go-xunit:
       - .gitlab-ci.yml
       - bin/**/*
       - src/go-xunit/**/*
+# }}}
