@@ -1,10 +1,11 @@
 C#
 ==
 
-* [Naming Guidelines](
-https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/naming-guidelines)
-* [C++ EditorConfig formatting conventions](
-https://docs.microsoft.com/en-us/visualstudio/ide/cpp-editorconfig-properties)
+* `Naming Guidelines`_
+* `C# formatting options`_
+
+.. _`Naming Guidelines`: https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/naming-guidelines
+.. _`C# formatting options`: https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/csharp-formatting-options
 
 .. code:: zsh
 
