@@ -5,8 +5,7 @@ stages:
 # rust {{{
 check-rust:
   stage: vet
-  # image: rust:latest
-  image: grauwoelfchen/rust-ci-tools:nightly
+  image: registry.gitlab.com/grauwoelfchen/portolan/rust-vet-tools:nightly
   before_script:
     - rustc --version
     - cargo --version
@@ -27,9 +26,10 @@ check-rust:
       - src/rust/**/*
 
 test-rust:
+  needs:
+    - check-rust
   stage: test
-  # image: rust:latest
-  image: grauwoelfchen/rust-ci-tools:nightly
+  image: registry.gitlab.com/grauwoelfchen/portolan/rust-vet-tools:nightly
   before_script:
     - rustc --version
     - cargo --version
@@ -56,8 +56,7 @@ test-rust:
 # rust-xunit {{{
 check-rust-xunit:
   stage: vet
-  # image: rust:latest
-  image: grauwoelfchen/rust-ci-tools:nightly
+  image: registry.gitlab.com/grauwoelfchen/portolan/rust-vet-tools:nightly
   before_script:
     - rustc --version
     - cargo --version
@@ -78,9 +77,10 @@ check-rust-xunit:
       - src/rust-xunit/**/*
 
 test-rust-xunit:
+  needs:
+    - check-rust-xunit
   stage: test
-  # image: rust:latest
-  image: grauwoelfchen/rust-ci-tools:nightly
+  image: registry.gitlab.com/grauwoelfchen/portolan/rust-vet-tools:nightly
   before_script:
     - rustc --version
     - cargo --version
@@ -131,6 +131,8 @@ check-csharp:
       - src/csharp/**/*
 
 test-csharp:
+  needs:
+    - check-csharp
   stage: test
   image: mcr.microsoft.com/dotnet/sdk:latest
   variables:
@@ -160,11 +162,11 @@ test-csharp:
 # go-xunit {{{
 check-go-xunit:
   stage: vet
-  image: go:latest
+  image: golang:latest
   before_script:
     - go version
   script:
-    - cd src/go-xunit && make format
+    - cd src/go-xunit/src/gitlab.com/grauwoelfchen/go-xunit && make format
   only:
     refs:
       - branches
@@ -182,18 +184,19 @@ check-go-xunit:
 # - create docker image for go (Gentoo Linux)
 # - coverage
 test-go-xunit:
+  needs:
+    - check-go-xunit
   stage: test
-  image: go:latest
+  image: golang:latest
   variables:
     APT_CACHE_DIR: apt-cache
   before_script:
     - mkdir -pv $APT_CACHE_DIR && apt-get -qq update
     - apt-get -qq -o dir::cache::archives="$APT_CACHE_DIR" install -y
       zip
-    - go get -u github.com/golang/dep/cmd/dep
     - go version
   script:
-    - cd src/go-xunit && make test
+    - cd src/go-xunit/src/gitlab.com/grauwoelfchen/go-xunit && make test
   cache:
     paths:
       - apt-cache
