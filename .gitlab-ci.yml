@@ -14,10 +14,14 @@ check-rust:
     - cd rust && make format
   only:
     refs:
-      - trunk
       - branches
       - merge_requests
     changes:
+      - README.md
+      - CHANGELOG
+      - .env.ci.sample
+      - .gitignore
+      - .gitlab-ci.yml
       - bin/**/*
       - src/rust/**/*
 
@@ -33,10 +37,14 @@ check-rust-xunit:
     - cd rust-xunit && make format
   only:
     refs:
-      - trunk
       - branches
       - merge_requests
     changes:
+      - README.md
+      - CHANGELOG
+      - .env.ci.sample
+      - .gitignore
+      - .gitlab-ci.yml
       - bin/**/*
       - src/rust-xunit/**/*
 
@@ -49,10 +57,14 @@ check-go-xunit:
     - cd go-xunit && make format
   only:
     refs:
-      - trunk
       - branches
       - merge_requests
     changes:
+      - README.md
+      - CHANGELOG
+      - .env.ci.sample
+      - .gitignore
+      - .gitlab-ci.yml
       - bin/**/*
       - src/go-xunit/**/*
 
@@ -71,10 +83,14 @@ test-rust:
   coverage: '/"covered":"(\d+(?:\.\d+)?)",/'
   only:
     refs:
-      - trunk
       - branches
       - merge_requests
     changes:
+      - README.md
+      - CHANGELOG
+      - .env.ci.sample
+      - .gitignore
+      - .gitlab-ci.yml
       - bin/**/*
       - src/rust/**/*
 
@@ -93,10 +109,14 @@ test-rust-xunit:
   coverage: '/"covered":"(\d+(?:\.\d+)?)",/'
   only:
     refs:
-      - trunk
       - branches
       - merge_requests
     changes:
+      - README.md
+      - CHANGELOG
+      - .env.ci.sample
+      - .gitignore
+      - .gitlab-ci.yml
       - bin/**/*
       - src/rust-xunit/**/*
 
@@ -121,9 +141,13 @@ test-go-xunit:
       - apt-cache
   only:
     refs:
-      - trunk
       - branches
       - merge_requests
     changes:
+      - README.md
+      - CHANGELOG
+      - .env.ci.sample
+      - .gitignore
+      - .gitlab-ci.yml
       - bin/**/*
       - src/go-xunit/**/*
