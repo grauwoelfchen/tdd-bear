@@ -6,18 +6,18 @@ using Money;
 
 public class Test {
   [SetUp]
-  public void setup() {
+  public void Setup() {
   }
 
   [Test]
-  public void testAddMultiplication() {
+  public void TestAddMultiplication() {
     Dollar product;
     var five = new Dollar(5);
 
-    product = five.times(2);
+    product = five.Times(2);
     Assert.That(product.amount, Is.EqualTo(10));
 
-    product = five.times(3);
+    product = five.Times(3);
     Assert.That(product.amount, Is.EqualTo(15));
   }
 }
