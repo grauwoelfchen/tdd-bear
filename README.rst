@@ -23,6 +23,12 @@ Packages
 .. |rust-xunit-coverage| image:: https://gitlab.com/grauwoelfchen/tdds/badges/rust-xunit/coverage.svg
    :target: https://gitlab.com/grauwoelfchen/tdds/commits/rust-xunit
 
+.. |go-pipeline| image:: https://gitlab.com/grauwoelfchen/tdds/badges/go/pipeline.svg
+   :target: https://gitlab.com/grauwoelfchen/tdds/commits/go
+
+.. |go-coverage| image:: https://gitlab.com/grauwoelfchen/tdds/badges/go/coverage.svg
+   :target: https://gitlab.com/grauwoelfchen/tdds/commits/go
+
 .. |go-xunit-pipeline| image:: https://gitlab.com/grauwoelfchen/tdds/badges/go-xunit/pipeline.svg
    :target: https://gitlab.com/grauwoelfchen/tdds/commits/go-xunit
 
@@ -49,7 +55,7 @@ Packages
 +--------------+-------------------------+-------------------------+
 | rust-xunit   | |rust-xunit-pipeline|   | |rust-xunit-coverage|   |
 +--------------+-------------------------+-------------------------+
-| go           |                         |                         |
+| go           | |go-pipeline|           | |go-coverage|           |
 +--------------+-------------------------+-------------------------+
 | go-xunit     | |go-xunit-pipeline|     | |go-xunit-coverage|     |
 +--------------+-------------------------+-------------------------+
