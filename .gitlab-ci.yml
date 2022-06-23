@@ -48,6 +48,26 @@ check-rust-xunit:
       - bin/**/*
       - src/rust-xunit/**/*
 
+check-csharp:
+  stage: vet
+  image: mcr.microsoft.com/dotnet/sdk:latest
+  before_script:
+    - dotnet --version
+  script:
+    - cd csharp && make format
+  only:
+    refs:
+      - branches
+      - merge_requests
+    changes:
+      - README.md
+      - CHANGELOG
+      - .env.ci.sample
+      - .gitignore
+      - .gitlab-ci.yml
+      - bin/**/*
+      - src/rust/**/*
+
 check-go-xunit:
   stage: vet
   image: go:latest
@@ -119,6 +139,27 @@ test-rust-xunit:
       - .gitlab-ci.yml
       - bin/**/*
       - src/rust-xunit/**/*
+
+test-csharp:
+  stage: test
+  image: mcr.microsoft.com/dotnet/sdk:latest
+  before_script:
+    - dotnet --version
+  script:
+    # TODO: coverage
+    - cd csharp && make test
+  only:
+    refs:
+      - branches
+      - merge_requests
+    changes:
+      - README.md
+      - CHANGELOG
+      - .env.ci.sample
+      - .gitignore
+      - .gitlab-ci.yml
+      - bin/**/*
+      - src/rust/**/*
 
 # TODO:
 # - create docker image for go (Gentoo Linux)
