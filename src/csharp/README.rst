@@ -1,9 +1,17 @@
 C#
 ==
 
+* [Naming Guidelines](
+https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/naming-guidelines)
+* [C++ EditorConfig formatting conventions](
+https://docs.microsoft.com/en-us/visualstudio/ide/cpp-editorconfig-properties)
+
 .. code:: zsh
 
-    % make test
+   # see .editorconfig
+   % make format
+
+   % make test
 
 
 License
