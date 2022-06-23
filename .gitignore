@@ -3,5 +3,9 @@
 /.tools/kcov
 /.tools/gitlab-ci-multi-runner
 
+.autoenv
+
+/**/pkg/*
+
 /**/dst/*
 !/**/dst/.gitignore
