@@ -26,6 +26,8 @@ check-rust:
       - src/rust/**/*
 
 test-rust:
+  needs:
+    - check-rust
   stage: test
   image: registry.gitlab.com/grauwoelfchen/portolan/rust-vet-tools:nightly
   before_script:
@@ -75,6 +77,8 @@ check-rust-xunit:
       - src/rust-xunit/**/*
 
 test-rust-xunit:
+  needs:
+    - check-rust-xunit
   stage: test
   image: registry.gitlab.com/grauwoelfchen/portolan/rust-vet-tools:nightly
   before_script:
@@ -127,6 +131,8 @@ check-csharp:
       - src/csharp/**/*
 
 test-csharp:
+  needs:
+    - check-csharp
   stage: test
   image: mcr.microsoft.com/dotnet/sdk:latest
   variables:
@@ -178,6 +184,8 @@ check-go-xunit:
 # - create docker image for go (Gentoo Linux)
 # - coverage
 test-go-xunit:
+  needs:
+    - check-go-xunit
   stage: test
   image: golang:latest
   variables:
