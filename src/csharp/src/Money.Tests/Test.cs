@@ -14,8 +14,13 @@ public class Test
     [Test]
     public void TestAddMultiplication()
     {
+        Dollar product;
         var five = new Dollar(5);
-        five.Times(2);
-        Assert.That(five.amount, Is.EqualTo(10));
+
+        product = five.times(2);
+        Assert.That(product.amount, Is.EqualTo(10));
+
+        product = five.times(3);
+        Assert.That(product.amount, Is.EqualTo(15));
     }
 }
