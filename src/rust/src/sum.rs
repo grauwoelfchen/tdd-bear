@@ -1,31 +1,30 @@
-use expression::Expression;
-use bank::Bank;
-use money::Money;
-use mul::Mul;
+use crate::expression::Expression;
+use crate::bank::Bank;
+use crate::money::Money;
+use crate::mul::Mul;
 
 pub struct Sum<'a> {
-  augend: &'a (Expression + 'a),
-  addend: &'a (Expression + 'a),
+  augend: &'a (dyn Expression + 'a),
+  addend: &'a (dyn Expression + 'a),
 }
 
 impl<'a> Sum<'a> {
   pub fn new(
-    augend: &'a (Expression + 'a),
-    addend: &'a (Expression + 'a),
-  ) -> Sum<'a>
-  {
+    augend: &'a (dyn Expression + 'a),
+    addend: &'a (dyn Expression + 'a),
+  ) -> Sum<'a> {
     Self { augend, addend }
   }
 }
 
 impl<'b> Expression for Sum<'b> {
-  fn plus<'a>(&'a self, addend: &'a (Expression + 'a)) -> Sum<'a> {
+  fn plus<'a>(&'a self, addend: &'a (dyn Expression + 'a)) -> Sum<'a> {
     Sum::new(self, addend)
   }
 
   fn reduce(&self, bank: &Bank, to: &'static str) -> Money {
-    let amount = self.augend.reduce(bank, to).amount() +
-      self.addend.reduce(bank, to).amount();
+    let amount = self.augend.reduce(bank, to).amount()
+      + self.addend.reduce(bank, to).amount();
     Money::new(amount, to)
   }
 

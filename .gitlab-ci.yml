@@ -5,7 +5,7 @@ stages:
 # rust {{{
 check-rust:
   stage: vet
-  image: registry.gitlab.com/grauwoelfchen/portolan/rust-vet-tools:nightly
+  image: registry.gitlab.com/grauwoelfchen/portolan/rust-vet-tools:stable
   before_script:
     - rustc --version
     - cargo --version
@@ -17,8 +17,6 @@ check-rust:
       - branches
       - merge_requests
     changes:
-      - README.md
-      - CHANGELOG
       - .env.ci.sample
       - .gitignore
       - .gitlab-ci.yml
@@ -29,7 +27,7 @@ test-rust:
   needs:
     - check-rust
   stage: test
-  image: registry.gitlab.com/grauwoelfchen/portolan/rust-vet-tools:nightly
+  image: registry.gitlab.com/grauwoelfchen/portolan/rust-vet-tools:stable
   before_script:
     - rustc --version
     - cargo --version
@@ -44,8 +42,6 @@ test-rust:
       - branches
       - merge_requests
     changes:
-      - README.md
-      - CHANGELOG
       - .env.ci.sample
       - .gitignore
       - .gitlab-ci.yml
@@ -68,8 +64,6 @@ check-rust-xunit:
       - branches
       - merge_requests
     changes:
-      - README.md
-      - CHANGELOG
       - .env.ci.sample
       - .gitignore
       - .gitlab-ci.yml
@@ -95,8 +89,6 @@ test-rust-xunit:
       - branches
       - merge_requests
     changes:
-      - README.md
-      - CHANGELOG
       - .env.ci.sample
       - .gitignore
       - .gitlab-ci.yml
@@ -122,8 +114,6 @@ check-csharp:
       - branches
       - merge_requests
     changes:
-      - README.md
-      - CHANGELOG
       - .env.ci.sample
       - .gitignore
       - .gitlab-ci.yml
@@ -150,8 +140,6 @@ test-csharp:
       - branches
       - merge_requests
     changes:
-      - README.md
-      - CHANGELOG
       - .env.ci.sample
       - .gitignore
       - .gitlab-ci.yml
@@ -172,8 +160,6 @@ check-go-xunit:
       - branches
       - merge_requests
     changes:
-      - README.md
-      - CHANGELOG
       - .env.ci.sample
       - .gitignore
       - .gitlab-ci.yml
@@ -205,8 +191,6 @@ test-go-xunit:
       - branches
       - merge_requests
     changes:
-      - README.md
-      - CHANGELOG
       - .env.ci.sample
       - .gitignore
       - .gitlab-ci.yml
