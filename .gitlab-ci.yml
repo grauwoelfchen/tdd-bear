@@ -51,7 +51,12 @@ check-rust-xunit:
 check-csharp:
   stage: vet
   image: mcr.microsoft.com/dotnet/sdk:latest
+  variables:
+    APT_CACHE_DIR: apt-cache
   before_script:
+    - mkdir -pv $APT_CACHE_DIR && apt-get -qq update
+    - apt-get -qq -o dir::cache::archives="$APT_CACHE_DIR" install -y
+      make
     - dotnet --version
   script:
     - cd src/csharp && make format
@@ -143,7 +148,12 @@ test-rust-xunit:
 test-csharp:
   stage: test
   image: mcr.microsoft.com/dotnet/sdk:latest
+  variables:
+    APT_CACHE_DIR: apt-cache
   before_script:
+    - mkdir -pv $APT_CACHE_DIR && apt-get -qq update
+    - apt-get -qq -o dir::cache::archives="$APT_CACHE_DIR" install -y
+      make
     - dotnet --version
   script:
     # TODO: coverage
