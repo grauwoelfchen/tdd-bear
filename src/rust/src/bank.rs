@@ -1,8 +1,8 @@
 use std::collections::HashMap;
 
-use money::Money;
-use expression::Expression;
-use pair::Pair;
+use crate::money::Money;
+use crate::expression::Expression;
+use crate::pair::Pair;
 
 pub struct Bank {
   rates: HashMap<Pair, u32>,
@@ -17,10 +17,9 @@ impl Bank {
 
   pub fn reduce<'a>(
     &self,
-    source: &'a (Expression + 'a),
+    source: &'a (dyn Expression + 'a),
     to: &'static str,
-  ) -> Money
-  {
+  ) -> Money {
     source.reduce(&self, to)
   }
 

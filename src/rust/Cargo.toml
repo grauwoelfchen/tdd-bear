@@ -2,5 +2,6 @@
 name = "money"
 version = "0.1.0"
 authors = ["Yasuhiro Asaka <yasuhiro.asaka@grauwoelfchen.net>"]
+edition = "2021"
 
 [dependencies]
