@@ -13,7 +13,7 @@ mod money_test {
   use money::sum::Sum;
 
   fn get_type<T>(_: &T) -> &'static str {
-    unsafe { type_name::<T>() }
+    type_name::<T>()
   }
 
   #[test]
