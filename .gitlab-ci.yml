@@ -2,16 +2,16 @@ stages:
   - vet
   - test
 
+# rust {{{
 check-rust:
   stage: vet
-  # image: rust:latest
-  image: grauwoelfchen/rust-ci-tools:nightly
+  image: registry.gitlab.com/grauwoelfchen/portolan/rust-vet-tools:nightly
   before_script:
     - rustc --version
     - cargo --version
     - cargo fmt --version
   script:
-    - cd rust && make format
+    - cd src/rust && make format
   only:
     refs:
       - branches
@@ -25,16 +25,44 @@ check-rust:
       - bin/**/*
       - src/rust/**/*
 
+test-rust:
+  needs:
+    - check-rust
+  stage: test
+  image: registry.gitlab.com/grauwoelfchen/portolan/rust-vet-tools:nightly
+  before_script:
+    - rustc --version
+    - cargo --version
+    - kcov --version
+  script:
+    - cd src/rust && make coverage
+  after_script:
+    - cat src/rust/target/coverage/index.json
+  coverage: '/"covered":"(\d+(?:\.\d+)?)",/'
+  only:
+    refs:
+      - branches
+      - merge_requests
+    changes:
+      - README.md
+      - CHANGELOG
+      - .env.ci.sample
+      - .gitignore
+      - .gitlab-ci.yml
+      - bin/**/*
+      - src/rust/**/*
+# }}}
+
+# rust-xunit {{{
 check-rust-xunit:
   stage: vet
-  # image: rust:latest
-  image: grauwoelfchen/rust-ci-tools:nightly
+  image: registry.gitlab.com/grauwoelfchen/portolan/rust-vet-tools:nightly
   before_script:
     - rustc --version
     - cargo --version
     - cargo fmt --version
   script:
-    - cd rust-xunit && make format
+    - cd src/rust-xunit && make format
   only:
     refs:
       - branches
@@ -48,13 +76,97 @@ check-rust-xunit:
       - bin/**/*
       - src/rust-xunit/**/*
 
+test-rust-xunit:
+  needs:
+    - check-rust-xunit
+  stage: test
+  image: registry.gitlab.com/grauwoelfchen/portolan/rust-vet-tools:nightly
+  before_script:
+    - rustc --version
+    - cargo --version
+    - kcov --version
+  script:
+    - cd src/rust-xunit && make coverage
+  after_script:
+    - cat src/rust-xunit/target/coverage/index.json
+  coverage: '/"covered":"(\d+(?:\.\d+)?)",/'
+  only:
+    refs:
+      - branches
+      - merge_requests
+    changes:
+      - README.md
+      - CHANGELOG
+      - .env.ci.sample
+      - .gitignore
+      - .gitlab-ci.yml
+      - bin/**/*
+      - src/rust-xunit/**/*
+# }}}
+
+# csharp {{{
+check-csharp:
+  stage: vet
+  image: mcr.microsoft.com/dotnet/sdk:latest
+  variables:
+    APT_CACHE_DIR: apt-cache
+  before_script:
+    - mkdir -pv $APT_CACHE_DIR && apt-get -qq update
+    - apt-get -qq -o dir::cache::archives="$APT_CACHE_DIR" install -y
+      make
+    - dotnet --version
+  script:
+    - cd src/csharp && make format
+  only:
+    refs:
+      - branches
+      - merge_requests
+    changes:
+      - README.md
+      - CHANGELOG
+      - .env.ci.sample
+      - .gitignore
+      - .gitlab-ci.yml
+      - bin/**/*
+      - src/csharp/**/*
+
+test-csharp:
+  needs:
+    - check-csharp
+  stage: test
+  image: mcr.microsoft.com/dotnet/sdk:latest
+  variables:
+    APT_CACHE_DIR: apt-cache
+  before_script:
+    - mkdir -pv $APT_CACHE_DIR && apt-get -qq update
+    - apt-get -qq -o dir::cache::archives="$APT_CACHE_DIR" install -y
+      make
+    - dotnet --version
+  script:
+    # TODO: coverage
+    - cd src/csharp && make test
+  only:
+    refs:
+      - branches
+      - merge_requests
+    changes:
+      - README.md
+      - CHANGELOG
+      - .env.ci.sample
+      - .gitignore
+      - .gitlab-ci.yml
+      - bin/**/*
+      - src/csharp/**/*
+# }}}
+
+# go-xunit {{{
 check-go-xunit:
   stage: vet
-  image: go:latest
+  image: golang:latest
   before_script:
     - go version
   script:
-    - cd go-xunit && make format
+    - cd src/go-xunit/src/gitlab.com/grauwoelfchen/go-xunit && make format
   only:
     refs:
       - branches
@@ -68,74 +180,23 @@ check-go-xunit:
       - bin/**/*
       - src/go-xunit/**/*
 
-test-rust:
-  stage: test
-  # image: rust:latest
-  image: grauwoelfchen/rust-ci-tools:nightly
-  before_script:
-    - rustc --version
-    - cargo --version
-    - kcov --version
-  script:
-    - cd rust && make coverage
-  after_script:
-    - cat rust/target/coverage/index.json
-  coverage: '/"covered":"(\d+(?:\.\d+)?)",/'
-  only:
-    refs:
-      - branches
-      - merge_requests
-    changes:
-      - README.md
-      - CHANGELOG
-      - .env.ci.sample
-      - .gitignore
-      - .gitlab-ci.yml
-      - bin/**/*
-      - src/rust/**/*
-
-test-rust-xunit:
-  stage: test
-  # image: rust:latest
-  image: grauwoelfchen/rust-ci-tools:nightly
-  before_script:
-    - rustc --version
-    - cargo --version
-    - kcov --version
-  script:
-    - cd rust-xunit && make coverage
-  after_script:
-    - cat rust-xunit/target/coverage/index.json
-  coverage: '/"covered":"(\d+(?:\.\d+)?)",/'
-  only:
-    refs:
-      - branches
-      - merge_requests
-    changes:
-      - README.md
-      - CHANGELOG
-      - .env.ci.sample
-      - .gitignore
-      - .gitlab-ci.yml
-      - bin/**/*
-      - src/rust-xunit/**/*
-
 # TODO:
 # - create docker image for go (Gentoo Linux)
 # - coverage
 test-go-xunit:
+  needs:
+    - check-go-xunit
   stage: test
-  image: go:latest
+  image: golang:latest
   variables:
     APT_CACHE_DIR: apt-cache
   before_script:
     - mkdir -pv $APT_CACHE_DIR && apt-get -qq update
     - apt-get -qq -o dir::cache::archives="$APT_CACHE_DIR" install -y
       zip
-    - go get -u github.com/golang/dep/cmd/dep
     - go version
   script:
-    - cd go-xunit && make test
+    - cd src/go-xunit/src/gitlab.com/grauwoelfchen/go-xunit && make test
   cache:
     paths:
       - apt-cache
@@ -151,3 +212,4 @@ test-go-xunit:
       - .gitlab-ci.yml
       - bin/**/*
       - src/go-xunit/**/*
+# }}}
