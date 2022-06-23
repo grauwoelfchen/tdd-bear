@@ -128,7 +128,7 @@ check-csharp:
       - .gitignore
       - .gitlab-ci.yml
       - bin/**/*
-      - src/rust/**/*
+      - src/csharp/**/*
 
 test-csharp:
   stage: test
@@ -154,7 +154,7 @@ test-csharp:
       - .gitignore
       - .gitlab-ci.yml
       - bin/**/*
-      - src/rust/**/*
+      - src/csharp/**/*
 # }}}
 
 # go-xunit {{{
