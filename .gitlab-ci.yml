@@ -5,7 +5,7 @@ stages:
 # rust {{{
 check-rust:
   stage: vet
-  image: registry.gitlab.com/grauwoelfchen/portolan/rust-vet-tools:nightly
+  image: registry.gitlab.com/grauwoelfchen/portolan/rust-vet-tools:stable
   before_script:
     - rustc --version
     - cargo --version
@@ -29,7 +29,7 @@ test-rust:
   needs:
     - check-rust
   stage: test
-  image: registry.gitlab.com/grauwoelfchen/portolan/rust-vet-tools:nightly
+  image: registry.gitlab.com/grauwoelfchen/portolan/rust-vet-tools:stable
   before_script:
     - rustc --version
     - cargo --version
