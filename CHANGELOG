@@ -1,4 +1,6 @@
 Fri 24 Jun 2022 Yasuhiro Яша Asaka <yasuhiro.asaka@grauwoelfchen.net>:
+	Fix rust with Rust 2021 Edition
+
 	Restructured projects
 
 	* Rename main branch to trunk from master
