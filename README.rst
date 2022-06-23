@@ -59,7 +59,7 @@ Packages
 +--------------+-------------------------+-------------------------+
 | go-xunit     | |go-xunit-pipeline|     | |go-xunit-coverage|     |
 +--------------+-------------------------+-------------------------+
-| csharp       | |csharp-pipeline|       | |csharp-pipeline|       |
+| csharp       | |csharp-pipeline|       | |csharp-coverage|       |
 +--------------+-------------------------+-------------------------+
 | csharp-xunit | |csharp-xunit-pipeline| | |csharp-xunit-coverage| |
 +--------------+-------------------------+-------------------------+
