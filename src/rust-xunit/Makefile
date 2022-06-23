@@ -16,7 +16,7 @@ test:  ## Run unit tests
 coverage:  ## Generate coverage report of unit tests using kcov (alias: cov)
 	## ../.tools/build-kcov
 	cargo build --tests
-	../.tools/check-kcov unittest kcov
+	../../bin/check-kcov unittest kcov
 .PHONY: coverage
 
 cov: | coverage

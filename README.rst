@@ -17,17 +17,17 @@ Packages
 .. |rust-coverage| image:: https://gitlab.com/grauwoelfchen/tdds/badges/rust/coverage.svg
    :target: https://gitlab.com/grauwoelfchen/tdds/commits/rust
 
-.. |rust-unittest-pipeline| image:: https://gitlab.com/grauwoelfchen/tdds/badges/rust-unittest/pipeline.svg
-   :target: https://gitlab.com/grauwoelfchen/tdds/commits/rust-unittest
+.. |rust-xunit-pipeline| image:: https://gitlab.com/grauwoelfchen/tdds/badges/rust-xunit/pipeline.svg
+   :target: https://gitlab.com/grauwoelfchen/tdds/commits/rust-xunit
 
-.. |rust-unittest-coverage| image:: https://gitlab.com/grauwoelfchen/tdds/badges/rust-unittest/coverage.svg
-   :target: https://gitlab.com/grauwoelfchen/tdds/commits/rust-unittest
+.. |rust-xunit-coverage| image:: https://gitlab.com/grauwoelfchen/tdds/badges/rust-xunit/coverage.svg
+   :target: https://gitlab.com/grauwoelfchen/tdds/commits/rust-xunit
 
-.. |go-unittest-pipeline| image:: https://gitlab.com/grauwoelfchen/tdds/badges/go-unittest/pipeline.svg
-   :target: https://gitlab.com/grauwoelfchen/tdds/commits/go-unittest
+.. |go-xunit-pipeline| image:: https://gitlab.com/grauwoelfchen/tdds/badges/go-xunit/pipeline.svg
+   :target: https://gitlab.com/grauwoelfchen/tdds/commits/go-xunit
 
-.. |go-unittest-coverage| image:: https://gitlab.com/grauwoelfchen/tdds/badges/go-unittest/coverage.svg
-   :target: https://gitlab.com/grauwoelfchen/tdds/commits/go-unittest
+.. |go-xunit-coverage| image:: https://gitlab.com/grauwoelfchen/tdds/badges/go-xunit/coverage.svg
+   :target: https://gitlab.com/grauwoelfchen/tdds/commits/go-xunit
 
 .. |csharp-pipeline| image:: https://gitlab.com/grauwoelfchen/tdds/badges/csharp/pipeline.svg
    :target: https://gitlab.com/grauwoelfchen/tdds/commits/csharp
@@ -35,28 +35,28 @@ Packages
 .. |csharp-coverage| image:: https://gitlab.com/grauwoelfchen/tdds/badges/csharp/coverage.svg
    :target: https://gitlab.com/grauwoelfchen/tdds/commits/csharp
 
-.. |csharp-unittest-pipeline| image:: https://gitlab.com/grauwoelfchen/tdds/badges/csharp-unittest/pipeline.svg
-   :target: https://gitlab.com/grauwoelfchen/tdds/commits/csharp-unittest
+.. |csharp-xunit-pipeline| image:: https://gitlab.com/grauwoelfchen/tdds/badges/csharp-xunit/pipeline.svg
+   :target: https://gitlab.com/grauwoelfchen/tdds/commits/csharp-xunit
 
-.. |csharp-unittest-coverage| image:: https://gitlab.com/grauwoelfchen/tdds/badges/csharp-unittest/coverage.svg
-   :target: https://gitlab.com/grauwoelfchen/tdds/commits/csharp-unittest
+.. |csharp-xunit-coverage| image:: https://gitlab.com/grauwoelfchen/tdds/badges/csharp-xunit/coverage.svg
+   :target: https://gitlab.com/grauwoelfchen/tdds/commits/csharp-xunit
 
 
-+-----------------+----------------------------+----------------------------+
-| Package         | Pipeline                   | Coverage                   |
-+=================+============================+============================+
-| rust            | |rust-pipeline|            | |rust-coverage|            |
-+-----------------+----------------------------+----------------------------+
-| rust-unittest   | |rust-unittest-pipeline|   | |rust-unittest-coverage|   |
-+-----------------+----------------------------+----------------------------+
-| go              |                            |                            |
-+-----------------+----------------------------+----------------------------+
-| go-unittest     | |go-unittest-pipeline|     | |go-unittest-coverage|     |
-+-----------------+----------------------------+----------------------------+
-| csharp          | |csharp-pipeline|          | |csharp-pipeline|          |
-+-----------------+----------------------------+----------------------------+
-| csharp-unittest | |csharp-unittest-pipeline| | |csharp-unittest-coverage| |
-+-----------------+----------------------------+----------------------------+
++--------------+-------------------------+-------------------------+
+| Package      | Pipeline                | Coverage                |
++==============+=========================+=========================+
+| rust         | |rust-pipeline|         | |rust-coverage|         |
++--------------+-------------------------+-------------------------+
+| rust-xunit   | |rust-xunit-pipeline|   | |rust-xunit-coverage|   |
++--------------+-------------------------+-------------------------+
+| go           |                         |                         |
++--------------+-------------------------+-------------------------+
+| go-xunit     | |go-xunit-pipeline|     | |go-xunit-coverage|     |
++--------------+-------------------------+-------------------------+
+| csharp       | |csharp-pipeline|       | |csharp-pipeline|       |
++--------------+-------------------------+-------------------------+
+| csharp-xunit | |csharp-xunit-pipeline| | |csharp-xunit-coverage| |
++--------------+-------------------------+-------------------------+
 
 
 Inspired Books

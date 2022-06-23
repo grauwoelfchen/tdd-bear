@@ -1,3 +1,12 @@
+Fri 24 Jun 2022 Yasuhiro Яша Asaka <yasuhiro.asaka@grauwoelfchen.net>:
+	Restructured projects
+
+	* Rename main branch to trunk from master
+	* Update only targets in .gitlab-ci.yml so that jobs can be invoked by
+	changes in the specific directories
+	* Move projects into src directory
+	* Rename xxx-unittest projects as xxx-xunit
+
 Wed 15 Jun 2022 Yasuhiro Яша Asaka <yasuhiro.asaka@grauwoelfchen.net>:
 	* [csharp] Add C# version
 
