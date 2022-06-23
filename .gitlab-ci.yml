@@ -11,7 +11,7 @@ check-rust:
     - cargo --version
     - cargo fmt --version
   script:
-    - cd rust && make format
+    - cd src/rust && make format
   only:
     refs:
       - branches
@@ -34,7 +34,7 @@ check-rust-xunit:
     - cargo --version
     - cargo fmt --version
   script:
-    - cd rust-xunit && make format
+    - cd src/rust-xunit && make format
   only:
     refs:
       - branches
@@ -54,7 +54,7 @@ check-csharp:
   before_script:
     - dotnet --version
   script:
-    - cd csharp && make format
+    - cd src/csharp && make format
   only:
     refs:
       - branches
@@ -74,7 +74,7 @@ check-go-xunit:
   before_script:
     - go version
   script:
-    - cd go-xunit && make format
+    - cd src/go-xunit && make format
   only:
     refs:
       - branches
@@ -97,9 +97,9 @@ test-rust:
     - cargo --version
     - kcov --version
   script:
-    - cd rust && make coverage
+    - cd src/rust && make coverage
   after_script:
-    - cat rust/target/coverage/index.json
+    - cat src/rust/target/coverage/index.json
   coverage: '/"covered":"(\d+(?:\.\d+)?)",/'
   only:
     refs:
@@ -123,9 +123,9 @@ test-rust-xunit:
     - cargo --version
     - kcov --version
   script:
-    - cd rust-xunit && make coverage
+    - cd src/rust-xunit && make coverage
   after_script:
-    - cat rust-xunit/target/coverage/index.json
+    - cat src/rust-xunit/target/coverage/index.json
   coverage: '/"covered":"(\d+(?:\.\d+)?)",/'
   only:
     refs:
@@ -147,7 +147,7 @@ test-csharp:
     - dotnet --version
   script:
     # TODO: coverage
-    - cd csharp && make test
+    - cd src/csharp && make test
   only:
     refs:
       - branches
@@ -176,7 +176,7 @@ test-go-xunit:
     - go get -u github.com/golang/dep/cmd/dep
     - go version
   script:
-    - cd go-xunit && make test
+    - cd src/go-xunit && make test
   cache:
     paths:
       - apt-cache
