@@ -20,4 +20,10 @@ public class Test {
     product = five.Times(3);
     Assert.That(product.amount, Is.EqualTo(15));
   }
+
+  [Test]
+  public void TestEquality() {
+    Assert.True(new Dollar(5).Equals(new Dollar(5)));
+    Assert.False(new Dollar(5).Equals(new Dollar(6)));
+  }
 }
