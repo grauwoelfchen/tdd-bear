@@ -1,4 +1,4 @@
-TDDS
+TDD-Bear
 ========
 
 ``Test-Driven Development Samples``
