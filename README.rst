@@ -64,9 +64,12 @@ Packages
 +--------------+-------------------------+-------------------------+
 | csharp-xunit | |csharp-xunit-pipeline| | |csharp-xunit-coverage| |
 +--------------+-------------------------+-------------------------+
+| python       |                         |                         |
++--------------+-------------------------+-------------------------+
 
 
 Inspired Books
 --------------
 
 * Test-Driven Development By Examples (9780321146533)
+* Learning Test-Driven Development (9781098106478)
