@@ -9,6 +9,14 @@ TDD-Bear
 * Python
 
 
+To-Do
+-----
+
+* Move CI jobs to the readonly Woodpecker CI instance on my home server
+* Publish builder images to the package registry on Codeberg.org
+* Remove unnecessary branches isolation
+
+
 Packages
 --------
 
