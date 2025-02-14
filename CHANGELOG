@@ -1,4 +1,7 @@
-Fri 24 Jun 2022 Yasuhiro Яша Asaka <yasuhiro.asaka@grauwoelfchen.net>:
+Fri 14 Feb 2025 Yasha <yasuhiro.asaka@grauwoelfchen.net>:
+	Add Python workspace
+
+Fri 24 Jun 2022 Yasha <yasuhiro.asaka@grauwoelfchen.net>:
 	Fix rust with Rust 2021 Edition
 
 	Restructured projects
@@ -9,19 +12,19 @@ Fri 24 Jun 2022 Yasuhiro Яша Asaka <yasuhiro.asaka@grauwoelfchen.net>:
 	* Move projects into src directory
 	* Rename xxx-unittest projects as xxx-xunit
 
-Wed 15 Jun 2022 Yasuhiro Яша Asaka <yasuhiro.asaka@grauwoelfchen.net>:
+Wed 15 Jun 2022 Yasha <yasuhiro.asaka@grauwoelfchen.net>:
 	* [csharp] Add C# version
 
-Wed 03 Oct 2018 Yasuhiro Яша Asaka <yasuhiro.asaka@grauwoelfchen.net>:
+Wed 03 Oct 2018 Yasha <yasuhiro.asaka@grauwoelfchen.net>:
 	* [go-unittest] Add golang version
 
-Sat 01 Sep 2018 Yasuhiro Яша Asaka <yasuhiro.asaka@grauwoelfchen.net>:
+Sat 01 Sep 2018 Yasha <yasuhiro.asaka@grauwoelfchen.net>:
 	* [rust-unittest] Create sub-project rust-unittest
 	* [rust] Fix format, Update Makefile (make help)
 
-Fri 13 Apr 2018 Yasuhiro Яша Asaka <yasuhiro.asaka@grauwoelfchen.net>:
+Fri 13 Apr 2018 Yasha <yasuhiro.asaka@grauwoelfchen.net>:
 	* Create docker image for jobs on CI (grauwoelfchen/rust-ci-tools)
 
-Tue 27 Feb 2018 Yasuhiro Яша Asaka <yasuhiro.asaka@grauwoelfchen.net>:
+Tue 27 Feb 2018 Yasha <yasuhiro.asaka@grauwoelfchen.net>:
 	* Start rust sub project
 	* Initial commit ;)
