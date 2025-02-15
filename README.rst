@@ -1,3 +1,17 @@
+..
+   RestructuredText: warning and note directives are not properly rendered #1682
+   https://github.com/github/markup/issues/1682
+
+.. note::
+   This repository has been moved. Please check the new locations below.
+
+   * `~grauwoelfchen/tdd-bear`_ on Sourcehut
+   * `grauwoelfchen/tdd-bear`_ on Codeberg
+
+.. _`~grauwoelfchen/tdd-bear`: https://git.sr.ht/~grauwoelfchen/tdd-bear
+.. _`grauwoelfchen/tdd-bear`: https://codeberg.org/grauwoelfchen/tdd-bear
+
+
 TDD-Bear
 ========
 
