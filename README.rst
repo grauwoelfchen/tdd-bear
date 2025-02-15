@@ -81,3 +81,9 @@ Inspired Books
 
 * Test-Driven Development By Examples (9780321146533)
 * Learning Test-Driven Development (9781098106478)
+
+
+License
+-------
+
+``GPL-3.0-or-later``
